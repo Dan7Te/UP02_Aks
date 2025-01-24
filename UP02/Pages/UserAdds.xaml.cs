@@ -42,5 +42,17 @@ namespace UP02.Pages {
         public void lviDoubleClick(object sender, RoutedEventArgs e) {
             NavigationService.Navigate(new EditAdd(CurrentUser, (Advertisment)lvAdds.SelectedValue));
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e) {
+            try {
+                Entities.GetContext().Advertisment.Remove((Advertisment)lvAdds.SelectedValue);
+                Entities.GetContext().SaveChanges();
+                MessageBox.Show("Объявление успешно удалено");
+                NavigationService.Navigate(new UserAdds(CurrentUser));
+            }
+            catch {
+                MessageBox.Show("Произошла ошибка удаления");
+            }
+        }
     }
 }

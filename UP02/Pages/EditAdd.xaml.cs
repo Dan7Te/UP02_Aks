@@ -66,20 +66,6 @@ namespace UP02.Pages {
             catch {
                 MessageBox.Show("Произошла ошибка удаления");
             }
-            //using(var db = new Entities()) {
-            //    try {
-            //        db.Advertisment.Remove(CurrentAdd);
-            //        db.SaveChanges();
-            //        MessageBox.Show("Объявление успешно удалено");
-
-            //        //Entities.GetContext().Advertisment.Remove(CurrentAdd);
-
-            //        NavigationService.Navigate(new UserAdds(CurrentUser));
-            //    }
-            //    catch {
-            //        MessageBox.Show("Произошла ошибка удаления");
-            //    }
-            //}
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e) {
@@ -115,21 +101,6 @@ namespace UP02.Pages {
             CurrentAdd.Price         = decimal.Parse(tbPrice.Text);
             CurrentAdd.Photo         = tbPhoto.Text == "" ? null : tbPhoto.Text;
 
-           
-            //using(var db = new Entities()) {
-            //    try {
-            //        db.Advertisment.AddOrUpdate(CurrentAdd);
-            //        Entities.GetContext().Advertisment.AddOrUpdate(CurrentAdd);
-            //        MessageBox.Show("Объявление успешно добавлено/обновлено");
-            //        db.SaveChanges();
-
-            //        NavigationService.Navigate(new UserAdds(CurrentUser));
-            //    }
-            //    catch {
-            //        MessageBox.Show("Произошла ошибка добавления/обновления");
-            //    }
-            //}
-
             try {
                 Entities.GetContext().Advertisment.AddOrUpdate(CurrentAdd);
                 Entities.GetContext().SaveChanges();
@@ -143,6 +114,13 @@ namespace UP02.Pages {
 
         private void btnBack_Click(object sender, RoutedEventArgs e) {
             NavigationService.Navigate(new UserAdds(CurrentUser));
+        }
+
+        private void cbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if(CurrentAdd.AdStatus == 0 && ((Statuses)cbStatus.SelectedValue).Id == 1) {
+                MessageBox.Show("Введите в поле \"Цена\" полученную сумму");
+            }
+            
         }
     }
 }

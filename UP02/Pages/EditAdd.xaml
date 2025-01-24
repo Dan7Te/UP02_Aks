@@ -118,6 +118,7 @@
                 VerticalAlignment="Top"
                 HorizontalContentAlignment="Right"
                 DisplayMemberPath = "StatusName"
+                SelectionChanged="cbStatus_SelectionChanged"
                 />
 
             <ComboBox

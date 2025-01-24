@@ -28,6 +28,17 @@
                 />
 
             <Button
+                x:Name="btnDelete"
+                Content="Удалить"
+                Height="38"
+                Width="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="140,20,20,20"
+                Click="btnDelete_Click"
+                />
+
+            <Button
                 x:Name="btnReturn"
                 Content="Вернуться"
                 Height="38"
