@@ -19,7 +19,8 @@ namespace UP02.API {
             int City = -1, 
             int Category = -1,
             int AdType = -1,
-            string AdName = ""
+            string AdName = "",
+            Users User = null
             ) {
 
             var Adds = Entities.GetContext().Advertisment.ToList();
@@ -45,6 +46,10 @@ namespace UP02.API {
                 Adds = Adds.Where(x => x.AdName.StartsWith(AdName)).ToList();
             }
 
+            if(User != null) {
+                Adds = Adds.Where(x => x.AdOwner == User.Id).ToList();
+            }
+
             return Adds;
         }
     
@@ -68,6 +73,17 @@ namespace UP02.API {
             double res = (double)GetAddList().Where(x => x.AdStatus == 1 && x.AdOwner == Owner.Id).ToList().Select(x => x.Price).Sum();
             return res;
         }
+
+        public Users GetUser(string Login, string Password) {
+            try {
+                Users user = Entities.GetContext().Users.ToList().Where(x => x.UserLogin == Login && x.UserPassword == Password).ToList().First();
+                return user;
+            }
+            catch {
+                return null;
+            }
+        }
+
     }
 
 

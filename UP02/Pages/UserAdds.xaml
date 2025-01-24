@@ -1,0 +1,149 @@
+﻿<Page x:Class="UP02.Pages.UserAdds"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UP02.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="UserAdds">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid
+         Grid.Row="0" 
+         >
+            <Button
+                x:Name="btnAddAdd"
+                Content="Добавить"
+                Height="38"
+                Width="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="btnAddAdd_Click"
+                />
+
+            <Button
+                x:Name="btnReturn"
+                Content="Вернуться"
+                Height="38"
+                Width="100"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="btnReturn_Click"                
+                />
+
+        </Grid>
+
+        <ListView
+             Grid.Row="1"
+             x:Name="lvAdds"
+             MinWidth="350"
+             MaxWidth="2000"
+             >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel 
+                     Orientation="Horizontal" 
+                     HorizontalAlignment="Center"
+                     Width="{Binding ElementName=lvAdds, Path=ActualWidth}"
+                     />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="1">
+                        <Border.InputBindings>
+                            <MouseBinding 
+                                Gesture="LeftDoubleClick"
+                                Command="{Binding lviDoubleClick}" 
+                                />
+                        </Border.InputBindings>   
+                    
+                        <Grid>
+                        
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="200*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label
+                             Grid.Row="0"
+                             Content="{Binding AdName}"
+                             Padding="0"
+                             HorizontalAlignment="Center"
+                             Style="{StaticResource lblLarge}"
+                             />
+
+                            <Grid
+                             Grid.Row="1"
+                             >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="200"/>
+                                    <ColumnDefinition MinWidth="150"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                 Grid.Column="0"
+                                 Width="200"
+                                 Height="200" 
+                                 Stretch="Uniform"
+                                 HorizontalAlignment="Center"
+                                 >
+                                    <Image.Source>
+                                        <Binding Path="Photo">
+                                            <Binding.TargetNullValue>
+                                                <ImageSource>/Sources/add.png</ImageSource>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
+
+                                <Grid 
+                                 Grid.Column="1"
+                                 >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label
+                                     Grid.Row="0"
+                                     Content="{Binding City1.CityName}"
+                                     Padding="0"
+                                     />
+
+                                    <Label
+                                     Grid.Row="1"
+                                     Content="{Binding Category1.CategoryName}"
+                                     Padding="0"
+                                     />
+
+                                    <Label
+                                     Grid.Row="2"
+                                     Content="{Binding AdType1.TypeName}"
+                                     Padding="0"
+                                     />
+
+                                    <Label
+                                     Grid.Row="4"
+                                     Content="{Binding Price}"
+                                     Padding="0"
+                                     />
+                                </Grid>
+
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </Grid>
+</Page>

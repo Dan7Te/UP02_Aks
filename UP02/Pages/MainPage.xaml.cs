@@ -21,8 +21,9 @@ namespace UP02.Pages {
     /// </summary>
     public partial class MainPage :Page {
         Connector connector = new Connector();
+        Users CurrentUser = null;
 
-        public MainPage() {
+        public MainPage(Users user = null) {
             InitializeComponent();
             
             lvAdds.ItemsSource = connector.GetAddList();
@@ -33,8 +34,15 @@ namespace UP02.Pages {
             cbType.ItemsSource = connector.GetTypeList();
 
             //пример работы функции подсчета профита
-            double i = connector.CountProfit(Entities.GetContext().Users.ToList()[5]);
-            var a = 212;
+            //double i = connector.CountProfit(Entities.GetContext().Users.ToList()[5]);
+            //var a = 212;
+
+            if(user != null) {
+                CurrentUser = user;
+                btnAuth.Content = $"{user.UserName} (перезайти)";
+                btnMyAdds.IsEnabled = true;
+
+            }
         }
 
         private void cbCity_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -76,6 +84,19 @@ namespace UP02.Pages {
             cbStatus.SelectedItem = null;
             cbType.SelectedItem = null;
             tbName.Text = "";
+        }
+
+        private void btnAuth_Click(object sender, RoutedEventArgs e) {
+            NavigationService.Navigate(new AuthPage());
+        }
+
+        private void btnMyAdds_Click(object sender, RoutedEventArgs e) {
+            if(CurrentUser == null) {
+                MessageBox.Show("Вы не авторизованы");
+            }
+            else {
+                NavigationService.Navigate(new UserAdds(CurrentUser));
+            }
         }
     }
 }

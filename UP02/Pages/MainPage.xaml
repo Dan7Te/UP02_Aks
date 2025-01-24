@@ -22,6 +22,7 @@
                 Content="Город"
                 Width="100"
                 HorizontalAlignment="Left"
+                HorizontalContentAlignment="Right"
                 VerticalAlignment="Top"
                 Height="40"
                 />
@@ -41,6 +42,7 @@
                 Content="Категория"
                 Width="100"
                 HorizontalAlignment="Left"
+                HorizontalContentAlignment="Right"
                 VerticalAlignment="Top"
                 Height="40"
                 Margin="20,80,20,20"
@@ -61,6 +63,7 @@
                 Content="Тип"
                 Width="100"
                 HorizontalAlignment="Left"
+                HorizontalContentAlignment="Right"
                 VerticalAlignment="Top"
                 Height="40"
                 Margin="240,20,20,20"
@@ -81,6 +84,7 @@
                 Content="Статус"
                 Width="100"
                 HorizontalAlignment="Left"
+                HorizontalContentAlignment="Right"
                 VerticalAlignment="Top"
                 Height="40"
                 Margin="240,80,20,20"
@@ -101,6 +105,7 @@
                 Content="Название"
                 Width="100"
                 HorizontalAlignment="Left"
+                HorizontalContentAlignment="Right"
                 VerticalAlignment="Top"
                 Height="40"
                 Margin="480,20,20,20"
@@ -119,12 +124,35 @@
             <Button
                 x:Name="btnClear"
                 Content="Очистить фильтры"
-                Width="200"
+                Width="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Height="40"
+                Margin="480,80,20,20"
+                Click="btnClear_Click"
+                />
+
+            <Button
+                x:Name="btnAuth"
+                Content="Авторизоваться"
+                Width="100"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Height="40"
                 Margin="600,80,20,20"
-                Click="btnClear_Click"
+                Click="btnAuth_Click"
+                />
+
+            <Button
+                x:Name="btnMyAdds"
+                Content="Мои объявления"
+                IsEnabled="False"
+                Width="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Height="40"
+                Margin="720,80,20,20"
+                Click="btnMyAdds_Click"
                 />
         </Grid>
 

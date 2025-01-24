@@ -18,7 +18,7 @@ namespace UP02.API
         private static Entities _context;
 
         public static Entities GetContext() {
-            if(_context == null) return new Entities();
+            if(_context == null) _context = new Entities();
             return _context;
         }
 
