@@ -38,6 +38,15 @@
                 Click="btnDelete_Click"
                 />
 
+            <Label
+                x:Name="lblProfit"
+                Height="38"
+                Width="200"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="260,20,20,20"
+                />
+
             <Button
                 x:Name="btnReturn"
                 Content="Вернуться"
@@ -46,6 +55,17 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Click="btnReturn_Click"                
+                />
+
+            <Button
+                x:Name="btnEnded"
+                Content="Завершённые"
+                Height="38"
+                Width="100"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="btnEnded_Click"
+                Margin="20,20,140,20"
                 />
 
         </Grid>

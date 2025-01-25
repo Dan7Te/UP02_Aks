@@ -22,6 +22,7 @@ namespace UP02.Pages {
 
         Connector connector = new Connector();
         Users CurrentUser;
+        bool EndedClicked = false;
 
         public UserAdds(Users user) {
             InitializeComponent();
@@ -53,6 +54,18 @@ namespace UP02.Pages {
             catch {
                 MessageBox.Show("Произошла ошибка удаления");
             }
+        }
+
+        private void btnEnded_Click(object sender, RoutedEventArgs e) {
+            if(!EndedClicked) {
+                lvAdds.ItemsSource = connector.GetSortedAddList(1, -1, -1, -1, "", CurrentUser);
+                lblProfit.Content = $"Общая полученная прибыль: {connector.CountProfit(CurrentUser)}";
+            }
+            else {
+                lvAdds.ItemsSource = connector.GetSortedAddList(-1, -1, -1, -1, "", CurrentUser);
+                lblProfit.Content = string.Empty;
+            }
+            
         }
     }
 }
