@@ -117,7 +117,7 @@ namespace UP02.Pages {
         }
 
         private void cbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if(CurrentAdd.AdStatus == 0 && ((Statuses)cbStatus.SelectedValue).Id == 1) {
+            if(CurrentAdd != null && CurrentAdd.AdStatus == 0 && ((Statuses)cbStatus.SelectedValue).Id == 1) {
                 MessageBox.Show("Введите в поле \"Цена\" полученную сумму");
             }
             
